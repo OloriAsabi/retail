@@ -1,0 +1,32 @@
+ [
+	{
+		"City": "Patiala",
+		"Locality": "Leela Bhawan",
+		"Folder": "patiala-leela-bhawan"
+	},
+	{
+		"City": "Mohali",
+		"Locality": "Phase 10",
+		"Folder": "mohali-phase-10"
+	},
+	{
+		"City": "Sangrur",
+		"Locality": "Nankiana",
+		"Folder": "sangrur-nankiana"
+	},
+	{
+		"City": "Jalandhar",
+		"Locality": "Urban Estate",
+		"Folder": "jalandhar-urban-estate"
+	},
+	{
+		"City": "Ludhiana",
+		"Locality": "Sukhmani Square",
+		"Folder": "ludhiana-sukhmani-square"
+	},
+	{
+		"City": "Bathinda",
+		"Locality": "PUDA",
+		"Folder": "bathinda-puda"
+	}
+]
