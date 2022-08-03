@@ -4,16 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retail</title>
+    <style>
+      body {
+          margin: 0;
+          padding:0;
+          font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+          box-sizing: border-box;
+          overflow-x: hidden;
+          overflow-y: scroll;
+          scroll-behavior: smooth;
+          transition: ease-in-out;
+      }
+      .gridBox{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        width: 100vw;
+        height: 100vh;
+        transition: all ease-in;
+      }
 
-    <!-- styles -->
-    <link rel="stylesheet" href="styles.css" />
+      .dash {
+          border-top: 3px solid #5e1605 ;;
+          width: 110px;
+      }
+      .borderHeight{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+      }
+      .borderHeight h1{
+          font-size: 50px;
+          padding: 3px;
+          margin-bottom: 1px;
+          color:  #5e1605 ;
+      }
+      .borderHeight a {
+        text-decoration: none;
+      }
+      .borderHeight p{
+          font-size: 30px;
+          font-weight: 500;
+          color:  #5e1605 ;
+          padding: 3px;
+      }
+      .borderHeight:nth-child(odd){
+          background-color: #fcbc41 !important;
+          color: #fff !important;
+      }
+      @media screen and (max-width: 600px) {
+        .borderHeight h1{
+          font-size: 25px;
+        }
+        .borderHeight p {
+          font-size: 15px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div
     id="links"
-    class="grid grid-cols-3 odd:text-white  w-screen h-screen transition ease-in">
+    class="gridBox">
   </div>
     <!-- javascript -->
-    <script src="app.js"></script>
+    <script>
+      const linksDOM = document.getElementById("links")
+
+      // const url = 'https://a.retailq.in/~web/stores.json';
+
+      fetch("./stores.json")
+        .then(function (response) {
+          return response;
+        })
+        .then(function (data) {
+          console.log(data);
+          return data.json();
+        })
+        .then(function (Normal) {
+          const html = Normal.map(
+            (data) =>
+                  `<div class='borderHeight'>
+                    <a href=${data.Folder}>
+                  <h1 class="">${data.City}</h1>
+                  </a>
+                  <div class='dash'/></div>
+                  <p class="" >${data.Locality}</p>
+                  </div>`
+            )
+            .join('');
+          linksDOM.innerHTML = html
+        })
+
+        .catch(function (err) {
+          console.log("Fetch problem show: " + err.message);
+        });
+    </script>
   </body>
 </html>
